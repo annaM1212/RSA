@@ -36,7 +36,7 @@ def is_prime(n):
 
 def generate_prime():
     while True:
-        num = random.randint(100, 999)  # случайное число между 100 и 999
+        num = random.randint(100, 999) 
         if is_prime(num):
             return num
 
