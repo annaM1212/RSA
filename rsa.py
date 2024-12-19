@@ -3,12 +3,10 @@ import math
 import tkinter as tk
 from tkinter import messagebox
 
-
 def gcd(a, b):
     while b:
         a, b = b, a % b
     return a
-
 
 def mod_inverse(a, m):
     m0, x0, x1 = m, 0, 1
@@ -19,7 +17,6 @@ def mod_inverse(a, m):
     if x1 < 0:
         x1 += m0
     return x1
-
 
 def is_prime(n):
     if n <= 1:
@@ -33,13 +30,11 @@ def is_prime(n):
             return False
     return True
 
-
 def generate_prime():
     while True:
         num = random.randint(100, 999) 
         if is_prime(num):
             return num
-
 
 def generate_keys():
     p = generate_prime()
@@ -59,18 +54,15 @@ def generate_keys():
 
     return ((e, n), (d, n))
 
-
 def encrypt(text, public_key):
     e, n = public_key
     encrypted = [pow(ord(char), e, n) for char in text]
     return encrypted
 
-
 def decrypt(encrypted, private_key):
     d, n = private_key
     decrypted = ''.join([chr(pow(char, d, n)) for char in encrypted])
     return decrypted
-
 
 class RSAApp:
     def __init__(self, root):
@@ -123,7 +115,6 @@ class RSAApp:
         except Exception as e:
             messagebox.showerror("Ошибка", "Ошибка при расшифровке текста.")
             print(e)
-
 
 if __name__ == "__main__":
     root = tk.Tk()
